@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#define LED D3
+#define LED D1
 
 void setup()
 {

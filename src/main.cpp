@@ -1,15 +1,15 @@
+#include <Arduino.h>
 #include <WebServer.h>
-#define LED D1
+
+WebServer myServer(80, "NSA Wiretap", "wwntmq49aigjgv2", true);
 
 void setup()
 {
-	pinMode(LED, OUTPUT);
+	Serial.begin(9600);
+	myServer.setup();
 }
 
 void loop()
 {
-	delay(500);
-	digitalWrite(LED, HIGH);
-	delay(500);
-	digitalWrite(LED, LOW);
+	myServer.loop();
 }

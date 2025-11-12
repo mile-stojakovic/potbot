@@ -2,23 +2,27 @@
 #define SERVER_H
 
 #include <Arduino.h>
-#include <WiFi.h>
+#include <ESP8266WiFi.h>
 
 class WebServer
 {
 	private:
 		WiFiServer _server;
-		WiFiClient _client;
 
 		char* _ssid;
 		const char* _password;
 		bool _debug = false;
+
+		unsigned long _currentTime = 0;
+		unsigned long _prevTime = 0;
+
+		String _header; // HTTP response header
 	
 	public:
 		WebServer(int port, char* ssid, const char* password, bool debug = false);
-		~WebServer();
 
 		void setup();
+		void loop();
 };
 
 #endif

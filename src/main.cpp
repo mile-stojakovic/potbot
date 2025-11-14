@@ -1,15 +1,17 @@
 #include <Arduino.h>
-#include <WebServer.h>
+#include <WebClient.h>
+#include <WiFiCredentials.h>
 
-WebServer myServer(80, "NSA Wiretap", "wwntmq49aigjgv2", true);
+WebClient client(WIFI_SSID, WIFI_PASS, true);
 
 void setup()
 {
 	Serial.begin(9600);
-	myServer.setup();
+	client.setup();
 }
 
 void loop()
 {
-	myServer.loop();
+	client.sendPost(SERVER_IP, "bruh");
+	delay(5000);
 }

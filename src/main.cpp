@@ -12,6 +12,8 @@ void setup()
 
 void loop()
 {
-	client.sendPost(SERVER_IP, "bruh");
+	int val = analogRead(A0);
+
+	client.sendPost(SERVER_IP, String(val));
 	delay(5000);
 }

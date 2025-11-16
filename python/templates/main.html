@@ -3,8 +3,9 @@
 	<head>
 		<title>PotBot</title>
 		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 			* {
-				font-family: Roboto;
+				font-family: "Roboto", sans-serif;
 			}
 		</style>
 	</head>
@@ -12,6 +13,7 @@
 	<body>
 		<h1>PotBot Alpha</h1>
 		<hr>
-		<p>Photoresistor value: {{ photo_val }}</p>
+		<p>Photoresistor value: <b>{{ photo_val }}</b></p>
+		<p>Moisture sensor value: <b>{{ moisture_val }}</b></p>
 	</body>
 </html>

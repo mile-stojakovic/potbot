@@ -12,8 +12,14 @@ void setup()
 
 void loop()
 {
-	int val = analogRead(A0);
+	int pval = analogRead(36);
+	int mval = analogRead(39);
 
-	client.sendPost(SERVER_IP, String(val));
+	String payload = String(pval) + "," + String(mval);
+
+	Serial.print("Payload: ");
+	Serial.println(payload);
+
+	client.sendPost(SERVER_IP, payload);
 	delay(5000);
 }

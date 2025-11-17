@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>PotBot</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+			* {
+				font-family: "Roboto", sans-serif;
+			}
+
+			.chart {
+				position: relative;
+				height: 30vh;
+				width: 90vw;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>PotBot Alpha</h1>
+		<hr>
+		<p>Photoresistor value: <b>{{ sensor_data["light"][-1] }}</b></p>
+		<div class="chart">
+			<canvas id="photoChart"></canvas>
+		</div>
+		<p>Moisture sensor value: <b>{{ sensor_data["moisture"][-1] }}</b></p>
+		<div class="chart">
+			<canvas id="moisChart"></canvas>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script>
+			const ctx1 = document.getElementById("photoChart").getContext("2d");
+			const ctx2 = document.getElementById("moisChart").getContext("2d");
+			
+			let data = {{ sensor_data | tojson }};
+
+			new Chart(ctx1, {
+				type: "line",
+				data: {
+					labels: data["light"].map((_, i) => i * 5),
+					datasets: [{
+						label: "Light Value over Time",
+						data: data["light"],
+						fill: false
+					}]
+				},
+				options: {
+					scales: {
+						x: {
+							title: {
+								display: true,
+								text: "Time (s)"
+							}
+						},
+						y: {
+							title: {
+								display: true,
+								text: "Light Value (lux)"
+							}
+						}
+					}
+				}
+
+			});
+
+			new Chart(ctx2, {
+				type: "line",
+				data: {
+					labels: data["moisture"].map((_, i) => i * 5),
+					datasets: [{
+						label: "Moisture Value over Time",
+						data: data["moisture"],
+						fill: false
+					}]
+				},
+				options: {
+					scales: {
+						x: {
+							title: {
+								display: true,
+								text: "Time (s)"
+							}
+						},
+						y: {
+							title: {
+								display: true,
+								text: "Moisture"
+							}
+						}
+					}
+				}
+
+			});
+		</script>
+	</body>
+</html>

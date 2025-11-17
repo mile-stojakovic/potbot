@@ -19,7 +19,7 @@ void WebClient::setup()
 
 	if (_debug)
 	{
-		Serial.println("Connected to WiFi.");
+		Serial.println("\nConnected to WiFi.");
 		Serial.print("Device IP Address: ");
 		Serial.println(WiFi.localIP());
 	}

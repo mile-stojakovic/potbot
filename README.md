@@ -19,7 +19,7 @@ To start the web server, you must have flask installed with Python. To install i
 ```bash
 pip install flask
 ```
-You must also ensure that both the ESP8266 and your computer are connected to a network whose subnet mask allows the devices to connect. To be safe, you can connect both of them to the same network.
+You must also ensure that both the ESP32 and your computer are connected to a network whose subnet mask allows the devices to connect. To be safe, you can connect both of them to the same network.
 The WiFi credentials are stored in a PlatformIO library. To provide them, add the following text to `lib/WiFiCredentials/WiFiCredentials.h`:
 ```c
 char* WIFI_SSID = "your network's name";
